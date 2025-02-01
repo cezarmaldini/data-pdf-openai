@@ -8,6 +8,8 @@ import json
 # Carregar variáveis do arquivo .env
 load_dotenv()
 
+nome_arquivo = input("Digite o nome do arquivo:")
+
 # Configurar a chave da API do Gemini
 api_key = os.getenv("KEY_API_GEMINI")
 genai.configure(api_key=api_key)
@@ -18,7 +20,7 @@ def extrair_texto_pdf(path_pdf):
     texto = "".join([pagina.extract_text() for pagina in reader.pages if pagina.extract_text()])
     return texto
 
-path = "proposta_02.pdf"
+path = "proposta_04.pdf"
 texto_extraido = extrair_texto_pdf(path)
 
 def extrair_precos_unitarios(texto):
@@ -73,7 +75,6 @@ df["Preço Unitário"] = (
 )
 
 # Salvar em CSV corretamente formatado
-csv_path = "insumos.csv"
-df.to_csv(csv_path, index=False, encoding="utf-8-sig", sep=";")
+df.to_csv(nome_arquivo,index=False, encoding="utf-8-sig", sep=";")
 
-print(f"✅ Arquivo CSV salvo em: {csv_path}")
+print(f"✅ Arquivo CSV salvo em: {nome_arquivo}")
