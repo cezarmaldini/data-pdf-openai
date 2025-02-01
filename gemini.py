@@ -20,7 +20,7 @@ def extrair_texto_pdf(path_pdf):
     texto = "".join([pagina.extract_text() for pagina in reader.pages if pagina.extract_text()])
     return texto
 
-path = "proposta_04.pdf"
+path = "proposta_07.pdf"
 texto_extraido = extrair_texto_pdf(path)
 
 def extrair_precos_unitarios(texto):
