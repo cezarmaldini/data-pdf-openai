@@ -20,7 +20,7 @@ def extrair_texto_pdf(path_pdf):
     texto = "".join([pagina.extract_text() for pagina in reader.pages if pagina.extract_text()])
     return texto
 
-path = "proposta_07.pdf"
+path = "propostas/proposta_02.pdf"
 texto_extraido = extrair_texto_pdf(path)
 
 def extrair_precos_unitarios(texto):
@@ -30,7 +30,7 @@ def extrair_precos_unitarios(texto):
                  Retorne os dados em formato JSON, com os campos:
                  - "Insumo"
                  - "Unidade"
-                 - "Preço Unitário"
+                 - "Preço Unitário" (No preço unitário desconsidere o 'R$', para ler somente o número)
 
                  Certifique-se de que a saída seja **apenas um JSON puro**, sem explicações ou comentários adicionais.
                  
